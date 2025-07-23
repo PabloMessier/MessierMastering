@@ -1098,7 +1098,7 @@ section {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 .main-audio {
