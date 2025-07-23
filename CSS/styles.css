@@ -1067,6 +1067,10 @@ section {
     flex-direction: column;
 }
 
+.content-section p {
+    margin-bottom: 0.5rem;
+}
+
 .example-category h3 {
     color: var(--primary-black);
     margin-bottom: 1.5rem;
@@ -1098,7 +1102,7 @@ section {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
-    margin-top: 0.5rem;
+    margin-top: -0.5rem;
 }
 
 .main-audio {
