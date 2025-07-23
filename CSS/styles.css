@@ -1106,6 +1106,8 @@ section {
     border-radius: 12px;
     padding: 1.5rem;
     color: var(--primary-white);
+    margin: 0 auto;
+    max-width: 500px;
 }
 
 .audio-wrapper audio {
