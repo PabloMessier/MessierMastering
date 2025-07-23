@@ -1,0 +1,13 @@
+{
+  "name": "messier-mastering",
+  "version": "1.0.0",
+  "description": "Professional audio mastering services website",
+  "scripts": {
+    "scan": "node scan-media.js",
+    "scan-and-serve": "node scan-media.js && cd .. && python3 -m http.server 8000",
+    "build": "node scan-media.js"
+  },
+  "keywords": ["audio", "mastering", "restoration"],
+  "author": "Pablo Messier",
+  "license": "ISC"
+}
