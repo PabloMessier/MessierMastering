@@ -718,7 +718,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
-    align-items: start;
+    align-items: stretch;
 }
 
 .mastering-restoration-grid .mastering,
