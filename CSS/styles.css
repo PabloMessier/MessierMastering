@@ -1050,6 +1050,10 @@ section {
     max-width: 1400px;
 }
 
+.examples .section-content {
+    max-width: none;
+}
+
 .section-intro {
     text-align: center;
     font-size: 1.1rem;
@@ -1057,24 +1061,6 @@ section {
     margin-bottom: 3rem;
 }
 
-.examples-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.example-category {
-    background: var(--primary-white);
-    border-radius: 16px;
-    padding: 4rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: start;
-}
 
 .content-section {
     display: flex;
