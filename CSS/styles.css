@@ -45,6 +45,26 @@ body {
     padding: 0 24px;
 }
 
+/* Video Loading Indicator */
+.video-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 10;
+    display: none;
+}
+
+.video-loading p {
+    margin: 0;
+    font-size: 16px;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
@@ -581,6 +601,9 @@ section {
     overflow: hidden;
     background: var(--primary-black);
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-video .video-wrapper video {

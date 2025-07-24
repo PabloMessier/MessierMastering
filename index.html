@@ -318,10 +318,13 @@
                         <div class="video-player-container">
                             <div class="main-video">
                                 <div class="video-wrapper">
-                                    <video id="main-player" controls preload="metadata">
-                                        <source src="VIDEO/Collaboration/El Vega, Ladronn, DJ Jac - CARNE VIVA - LilSilvioElVegaVEVO (1080p, h264, youtube).mp4" type="video/mp4">
+                                    <video id="main-player" controls preload="none" poster="">
+                                        <source src="" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
+                                    <div class="video-loading" id="video-loading">
+                                        <p>Click a video from the playlist to start watching</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -351,7 +354,7 @@
                         <div class="video-player-container">
                             <div class="main-video">
                                 <div class="video-wrapper">
-                                    <video id="mastering-player" controls preload="metadata">
+                                    <video id="mastering-player" controls preload="none">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
@@ -376,7 +379,7 @@
                         <div class="video-player-container">
                             <div class="main-video">
                                 <div class="video-wrapper">
-                                    <video id="restoration-player" controls preload="metadata">
+                                    <video id="restoration-player" controls preload="none">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>

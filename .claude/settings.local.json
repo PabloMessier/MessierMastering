@@ -5,7 +5,13 @@
       "Bash(node:*)",
       "Bash(mv:*)",
       "Bash(npm run scan:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(aws s3:*)",
+      "Bash(aws configure:*)",
+      "Bash(aws cloudfront:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

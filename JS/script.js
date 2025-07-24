@@ -36,6 +36,7 @@ function initializeAudioPlayers() {
 function initializeVideoPlaylist() {
     const mainPlayer = document.getElementById('main-player');
     const playlistContainer = document.getElementById('video-playlist');
+    const videoLoading = document.getElementById('video-loading');
     
     if (!mainPlayer || !playlistContainer) return;
     
@@ -113,7 +114,7 @@ function initializeVideoPlaylist() {
             </div>
         `;
         
-        // Add click event listener
+        // Add click event listener with lazy loading
         playlistItem.addEventListener('click', function() {
             // Remove active class from all items
             document.querySelectorAll('.playlist-item').forEach(item => {
@@ -123,17 +124,33 @@ function initializeVideoPlaylist() {
             // Add active class to clicked item
             this.classList.add('active');
             
-            // Update main player source
+            // Show loading state
+            if (videoLoading) {
+                videoLoading.style.display = 'block';
+                videoLoading.innerHTML = '<p>Loading video...</p>';
+            }
+            
+            // Update main player source only when clicked (lazy loading)
             const videoPath = this.getAttribute('data-video-path');
             mainPlayer.src = videoPath;
-            mainPlayer.load(); // Reload the video element
+            mainPlayer.preload = 'metadata'; // Only load metadata first
+            mainPlayer.load();
             
-            // Auto-play the video after loading
-            mainPlayer.addEventListener('loadeddata', function() {
-                this.play().catch(error => {
-                    console.log('Auto-play prevented by browser:', error);
-                });
-            }, { once: true }); // Use once: true to prevent multiple listeners
+            // Hide loading and show video when ready
+            mainPlayer.addEventListener('loadedmetadata', function() {
+                if (videoLoading) {
+                    videoLoading.style.display = 'none';
+                }
+                console.log('Video metadata loaded:', videoPath);
+            }, { once: true });
+            
+            // Handle loading errors
+            mainPlayer.addEventListener('error', function(e) {
+                if (videoLoading) {
+                    videoLoading.innerHTML = '<p>Error loading video. Please try again.</p>';
+                }
+                console.error('Video load error:', e);
+            }, { once: true });
             
             // Optional: Add fade effect
             mainPlayer.style.opacity = '0.5';
@@ -213,13 +230,11 @@ function initializeMasteringPlaylist() {
             
             const videoPath = this.getAttribute('data-video-path');
             masteringPlayer.src = videoPath;
+            masteringPlayer.preload = 'metadata'; // Only load metadata first
             masteringPlayer.load();
             
-            masteringPlayer.addEventListener('loadeddata', function() {
-                this.play().catch(error => {
-                    console.log('Auto-play prevented by browser:', error);
-                });
-            }, { once: true });
+            // No auto-play for better performance
+            console.log('Mastering video loaded:', videoPath);
             
             masteringPlayer.style.opacity = '0.5';
             setTimeout(() => {
@@ -230,10 +245,8 @@ function initializeMasteringPlaylist() {
         playlistContainer.appendChild(playlistItem);
     });
     
-    // Set the first video as default
-    if (masteringVideos.length > 0) {
-        masteringPlayer.src = `VIDEO/Mastering/${masteringVideos[0]}`;
-    }
+    // Don't set default video - use lazy loading instead
+    console.log('Mastering playlist initialized with lazy loading');
 }
 
 // Audio Restoration Video Playlist Management
@@ -295,13 +308,11 @@ function initializeRestorationPlaylist() {
             
             const videoPath = this.getAttribute('data-video-path');
             restorationPlayer.src = videoPath;
+            restorationPlayer.preload = 'metadata'; // Only load metadata first
             restorationPlayer.load();
             
-            restorationPlayer.addEventListener('loadeddata', function() {
-                this.play().catch(error => {
-                    console.log('Auto-play prevented by browser:', error);
-                });
-            }, { once: true });
+            // No auto-play for better performance
+            console.log('Restoration video loaded:', videoPath);
             
             restorationPlayer.style.opacity = '0.5';
             setTimeout(() => {
@@ -312,10 +323,8 @@ function initializeRestorationPlaylist() {
         playlistContainer.appendChild(playlistItem);
     });
     
-    // Set the first video as default
-    if (restorationVideos.length > 0) {
-        restorationPlayer.src = `VIDEO/Restoration/${restorationVideos[0]}`;
-    }
+    // Don't set default video - use lazy loading instead
+    console.log('Restoration playlist initialized with lazy loading');
 }
 
 // Audio Examples Management
