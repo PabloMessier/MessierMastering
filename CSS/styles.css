@@ -1123,26 +1123,26 @@ section {
 /* Audio Player Container */
 .audio-player-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 2rem;
-    margin-top: -0.5rem;
+    width: 100%;
 }
 
 .main-audio {
     background: var(--gray-900);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2rem;
     color: var(--primary-white);
-    margin: 0 auto;
-    max-width: 500px;
+    width: 100%;
+    min-height: 160px;
 }
 
 .audio-wrapper audio {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     background: var(--primary-black);
     border-radius: 8px;
-    min-height: 50px;
+    min-height: 60px;
 }
 
 .audio-info h4 {
@@ -1160,10 +1160,11 @@ section {
 .audio-playlist {
     background: var(--gray-50);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     max-height: 500px;
     overflow-y: auto;
+    min-height: 300px;
 }
 
 .audio-playlist h3 {
@@ -1251,6 +1252,23 @@ section {
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     min-width: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-explanation-section {
+    grid-column: 1 / -1;
+    padding: 1.5rem;
+    background: var(--gray-50);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-orange);
 }
 
 .example-category h3 {
@@ -1372,8 +1390,24 @@ section {
     
     .example-category {
         padding: 2rem;
+        grid-template-rows: 1fr auto;
+        gap: 1.5rem;
+    }
+    
+    .audio-player-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .main-audio {
+        padding: 1.5rem;
+        min-height: 140px;
+    }
+    
+    .audio-playlist {
+        padding: 1.5rem;
+        min-height: 250px;
+        max-height: 350px;
     }
     
     .audio-comparison {
@@ -1432,10 +1466,29 @@ body[data-breakpoint="mobile-small"] .examples-grid {
 }
 
 /* Mobile: Also stack audio player components vertically */
+body[data-breakpoint="mobile"] .example-category,
+body[data-breakpoint="mobile-small"] .example-category {
+    grid-template-rows: 1fr auto;
+    gap: 1.5rem;
+}
+
 body[data-breakpoint="mobile"] .audio-player-container,
 body[data-breakpoint="mobile-small"] .audio-player-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+}
+
+body[data-breakpoint="mobile"] .main-audio,
+body[data-breakpoint="mobile-small"] .main-audio {
+    padding: 1.5rem;
+    min-height: 120px;
+}
+
+body[data-breakpoint="mobile"] .audio-playlist,
+body[data-breakpoint="mobile-small"] .audio-playlist {
+    padding: 1.5rem;
+    min-height: 200px;
+    max-height: 300px;
 }
 
 /* Tablet: Keep single column with adequate spacing */
@@ -1444,16 +1497,47 @@ body[data-breakpoint="tablet"] .examples-grid {
     gap: 2rem;
 }
 
-/* Desktop: Use side-by-side layout for audio players */
-body[data-breakpoint="desktop"] .audio-player-container {
-    grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
+body[data-breakpoint="tablet"] .example-category {
+    grid-template-rows: 1fr auto;
+    gap: 1.5rem;
 }
 
-/* Tablet: Adjust audio player layout for smaller space */
 body[data-breakpoint="tablet"] .audio-player-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+}
+
+body[data-breakpoint="tablet"] .main-audio {
+    padding: 1.5rem;
+    min-height: 140px;
+}
+
+body[data-breakpoint="tablet"] .audio-playlist {
+    padding: 1.5rem;
+    min-height: 220px;
+    max-height: 350px;
+}
+
+/* Desktop: Use side-by-side layout for audio players */
+body[data-breakpoint="desktop"] .example-category {
+    grid-template-rows: 1fr auto;
+    gap: 2rem;
+}
+
+body[data-breakpoint="desktop"] .audio-player-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+body[data-breakpoint="desktop"] .main-audio {
+    padding: 2rem;
+    min-height: 160px;
+}
+
+body[data-breakpoint="desktop"] .audio-playlist {
+    padding: 2rem;
+    min-height: 300px;
+    max-height: 500px;
 }
 
 /* Orientation-specific styles */
