@@ -136,12 +136,17 @@ function initializeVideoPlaylist() {
             mainPlayer.preload = 'metadata'; // Only load metadata first
             mainPlayer.load();
             
-            // Hide loading and show video when ready
+            // Hide loading and auto-play video when ready
             mainPlayer.addEventListener('loadedmetadata', function() {
                 if (videoLoading) {
                     videoLoading.style.display = 'none';
                 }
                 console.log('Video metadata loaded:', videoPath);
+                
+                // Auto-play the video after metadata is loaded
+                this.play().catch(error => {
+                    console.log('Auto-play prevented by browser:', error);
+                });
             }, { once: true });
             
             // Handle loading errors
@@ -233,7 +238,13 @@ function initializeMasteringPlaylist() {
             masteringPlayer.preload = 'metadata'; // Only load metadata first
             masteringPlayer.load();
             
-            // No auto-play for better performance
+            // Auto-play the video after loading
+            masteringPlayer.addEventListener('loadedmetadata', function() {
+                this.play().catch(error => {
+                    console.log('Auto-play prevented by browser:', error);
+                });
+            }, { once: true });
+            
             console.log('Mastering video loaded:', videoPath);
             
             masteringPlayer.style.opacity = '0.5';
@@ -311,7 +322,13 @@ function initializeRestorationPlaylist() {
             restorationPlayer.preload = 'metadata'; // Only load metadata first
             restorationPlayer.load();
             
-            // No auto-play for better performance
+            // Auto-play the video after loading
+            restorationPlayer.addEventListener('loadedmetadata', function() {
+                this.play().catch(error => {
+                    console.log('Auto-play prevented by browser:', error);
+                });
+            }, { once: true });
+            
             console.log('Restoration video loaded:', videoPath);
             
             restorationPlayer.style.opacity = '0.5';
