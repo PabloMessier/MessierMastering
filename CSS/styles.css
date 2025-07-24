@@ -967,7 +967,7 @@ section {
         gap: 1.5rem;
     }
     
-    .main-audio {
+    .audio-wrapper {
         order: 1;
         padding: 1.5rem;
     }
@@ -1044,7 +1044,7 @@ section {
         padding: 2rem 1rem;
     }
     
-    .main-audio {
+    .audio-wrapper {
         padding: 1rem;
     }
     
@@ -1126,15 +1126,21 @@ section {
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
     margin-top: -0.5rem;
+    height: 160px;
+    align-items: stretch;
 }
 
-.main-audio {
-    background: var(--gray-900);
+.audio-wrapper {
+    background: var(--gray-50);
     border-radius: 12px;
     padding: 1.5rem;
-    color: var(--primary-white);
     margin: 0 auto;
     max-width: 500px;
+    height: 140px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .audio-wrapper audio {
@@ -1145,16 +1151,34 @@ section {
     min-height: 50px;
 }
 
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 60px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
 .audio-info h4 {
     margin: 0 0 0.5rem 0;
-    color: var(--primary-white);
+    color: var(--primary-black);
     font-size: 1.2rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .audio-info p {
     margin: 0;
-    color: var(--gray-300);
+    color: var(--gray-600);
     font-size: 0.9rem;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .audio-playlist {
