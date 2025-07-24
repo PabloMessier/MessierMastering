@@ -1103,6 +1103,8 @@ section {
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
     margin-top: -0.5rem;
+    height: 160px;
+    align-items: stretch;
 }
 
 .audio-wrapper {
@@ -1111,7 +1113,11 @@ section {
     padding: 1.5rem;
     margin: 0 auto;
     max-width: 500px;
+    height: 140px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .audio-wrapper audio {
@@ -1126,6 +1132,9 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    height: 60px;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .audio-info h4 {
