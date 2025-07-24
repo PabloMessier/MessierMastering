@@ -1131,18 +1131,86 @@ section {
 .main-audio {
     background: var(--gray-900);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem 2rem 2rem 2rem;
     color: var(--primary-white);
     width: 100%;
-    min-height: 160px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .audio-wrapper audio {
-    width: 100%;
-    margin-bottom: 1.5rem;
-    background: var(--primary-black);
-    border-radius: 8px;
-    min-height: 60px;
+    display: none;
+}
+
+/* Custom circular audio controls */
+.custom-audio-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.circular-progress {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle-bg {
+    opacity: 0.3;
+}
+
+.progress-ring__circle {
+    stroke-dasharray: 326.73;
+    stroke-dashoffset: 326.73;
+    transition: stroke-dashoffset 0.1s ease-in-out;
+    stroke-linecap: round;
+}
+
+.play-pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--primary-white);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--primary-black);
+    transition: background-color 0.2s ease;
+}
+
+.play-pause-btn:hover {
+    background: var(--gray-200);
+}
+
+.time-display {
+    color: var(--gray-300);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.audio-info {
+    margin-top: 1rem;
 }
 
 .audio-info h4 {
@@ -1329,7 +1397,11 @@ section {
 
 .audio-player audio {
     width: 100%;
-    height: 40px;
+    height: 60px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
 }
 
 .restoration-example {

@@ -176,20 +176,29 @@
                         <div class="content-section">
                             <h3>Mastering Examples</h3>
                             <p>Each mastering example includes three audio files:</p>
-                            <ul class="example-explanation">
-                                <li><strong>Final Mix:</strong> The original unprocessed mix</li>
-                                <li><strong>Mastered:</strong> The professionally mastered version</li>
-                                <li><strong>Unmastered (Level Matched):</strong> The original mix with gain matched to the mastered version</li>
-                            </ul>
-                            <p class="note-text">This approach eliminates the deceptive volume difference, allowing you to hear exactly what mastering does to your music.</p>
                         </div>
                         
                         <div class="audio-player-container">
                             <div class="main-audio">
                                 <div class="audio-wrapper">
-                                    <audio id="mastering-audio-player" controls preload="metadata">
+                                    <audio id="mastering-audio-player" preload="metadata">
                                         Your browser does not support the audio element.
                                     </audio>
+                                    <div class="custom-audio-controls">
+                                        <div class="circular-progress">
+                                            <svg class="progress-ring" width="100" height="100">
+                                                <circle class="progress-ring__circle-bg" stroke="#374151" stroke-width="6" fill="transparent" r="44" cx="50" cy="50"/>
+                                                <circle class="progress-ring__circle" stroke="#fbbf24" stroke-width="6" fill="transparent" r="44" cx="50" cy="50"/>
+                                            </svg>
+                                            <button class="play-pause-btn" id="mastering-play-btn">
+                                                <span class="play-icon">▶</span>
+                                                <span class="pause-icon" style="display: none;">⏸</span>
+                                            </button>
+                                        </div>
+                                        <div class="time-display">
+                                            <span id="mastering-current-time">0:00</span> / <span id="mastering-duration">0:00</span>
+                                        </div>
+                                    </div>
                                     <div class="audio-info">
                                         <h4 id="mastering-track-title">Select a track from the playlist</h4>
                                         <p id="mastering-track-type">Choose a version to play</p>
@@ -199,6 +208,12 @@
                             
                             <div class="audio-playlist">
                                 <h3>Mastering Examples</h3>
+                                <ul class="example-explanation">
+                                    <li><strong>Final Mix:</strong> The original unprocessed mix</li>
+                                    <li><strong>Mastered:</strong> The professionally mastered version</li>
+                                    <li><strong>Unmastered (Level Matched):</strong> The original mix with gain matched to the mastered version</li>
+                                </ul>
+                                <p class="note-text">This approach eliminates the deceptive volume difference, allowing you to hear exactly what mastering does to your music.</p>
                                 <div class="audio-playlist-items" id="mastering-audio-playlist">
                                     <!-- Playlist items will be dynamically generated -->
                                 </div>
@@ -216,9 +231,24 @@
                         <div class="audio-player-container">
                             <div class="main-audio">
                                 <div class="audio-wrapper">
-                                    <audio id="restoration-audio-player" controls preload="metadata">
+                                    <audio id="restoration-audio-player" preload="metadata">
                                         Your browser does not support the audio element.
                                     </audio>
+                                    <div class="custom-audio-controls">
+                                        <div class="circular-progress">
+                                            <svg class="progress-ring" width="100" height="100">
+                                                <circle class="progress-ring__circle-bg" stroke="#374151" stroke-width="6" fill="transparent" r="44" cx="50" cy="50"/>
+                                                <circle class="progress-ring__circle" stroke="#fbbf24" stroke-width="6" fill="transparent" r="44" cx="50" cy="50"/>
+                                            </svg>
+                                            <button class="play-pause-btn" id="restoration-play-btn">
+                                                <span class="play-icon">▶</span>
+                                                <span class="pause-icon" style="display: none;">⏸</span>
+                                            </button>
+                                        </div>
+                                        <div class="time-display">
+                                            <span id="restoration-current-time">0:00</span> / <span id="restoration-duration">0:00</span>
+                                        </div>
+                                    </div>
                                     <div class="audio-info">
                                         <h4 id="restoration-track-title">Select a track from the playlist</h4>
                                         <p id="restoration-track-type">Choose a version to play</p>

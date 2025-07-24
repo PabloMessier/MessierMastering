@@ -880,7 +880,118 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
+    // Initialize circular audio players
+    initializeCircularAudioPlayers();
+    
     // Initialize
     updateActiveNavLink();
     updateHeaderOpacity();
 });
+
+// Circular Audio Player Controls
+function initializeCircularAudioPlayers() {
+    // Mastering audio player
+    const masteringAudio = document.getElementById('mastering-audio-player');
+    const masteringPlayBtn = document.getElementById('mastering-play-btn');
+    const masteringCurrentTime = document.getElementById('mastering-current-time');
+    const masteringDuration = document.getElementById('mastering-duration');
+    const masteringProgressCircle = document.querySelector('#mastering-play-btn').closest('.circular-progress').querySelector('.progress-ring__circle');
+    
+    if (masteringAudio && masteringPlayBtn) {
+        setupCircularPlayer(masteringAudio, masteringPlayBtn, masteringCurrentTime, masteringDuration, masteringProgressCircle);
+    }
+    
+    // Restoration audio player
+    const restorationAudio = document.getElementById('restoration-audio-player');
+    const restorationPlayBtn = document.getElementById('restoration-play-btn');
+    const restorationCurrentTime = document.getElementById('restoration-current-time');
+    const restorationDuration = document.getElementById('restoration-duration');
+    const restorationProgressCircle = document.querySelector('#restoration-play-btn').closest('.circular-progress').querySelector('.progress-ring__circle');
+    
+    if (restorationAudio && restorationPlayBtn) {
+        setupCircularPlayer(restorationAudio, restorationPlayBtn, restorationCurrentTime, restorationDuration, restorationProgressCircle);
+    }
+}
+
+function setupCircularPlayer(audio, playBtn, currentTimeEl, durationEl, progressCircle) {
+    const playIcon = playBtn.querySelector('.play-icon');
+    const pauseIcon = playBtn.querySelector('.pause-icon');
+    const circumference = 2 * Math.PI * 44; // r = 44
+    
+    // Set initial progress circle style
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+    
+    // Play/Pause button functionality
+    playBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    });
+    
+    // Update UI when audio plays
+    audio.addEventListener('play', function() {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+    });
+    
+    // Update UI when audio pauses
+    audio.addEventListener('pause', function() {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
+    
+    // Update duration when metadata loads
+    audio.addEventListener('loadedmetadata', function() {
+        if (durationEl) {
+            durationEl.textContent = formatTime(audio.duration);
+        }
+    });
+    
+    // Update progress and time
+    audio.addEventListener('timeupdate', function() {
+        const progress = audio.currentTime / audio.duration;
+        const offset = circumference - (progress * circumference);
+        
+        progressCircle.style.strokeDashoffset = offset;
+        
+        if (currentTimeEl) {
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+    });
+    
+    // Reset when audio ends
+    audio.addEventListener('ended', function() {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        progressCircle.style.strokeDashoffset = circumference;
+        if (currentTimeEl) {
+            currentTimeEl.textContent = '0:00';
+        }
+    });
+    
+    // Click on progress circle to seek
+    progressCircle.closest('.progress-ring').addEventListener('click', function(e) {
+        if (audio.duration) {
+            const rect = this.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+            let progress = (angle + Math.PI / 2) / (2 * Math.PI);
+            
+            if (progress < 0) progress += 1;
+            
+            audio.currentTime = progress * audio.duration;
+        }
+    });
+}
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
