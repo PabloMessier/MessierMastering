@@ -1112,7 +1112,8 @@ section {
     color: var(--primary-white);
     margin: 0 auto;
     max-width: 500px;
-    min-height: 180px;
+    height: 220px;
+    overflow: hidden;
 }
 
 .audio-wrapper audio {
@@ -1123,11 +1124,23 @@ section {
     min-height: 50px;
 }
 
+.audio-info {
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
 .audio-info h4 {
     margin: 0 0 0.5rem 0;
     color: var(--primary-white);
     font-size: 1.2rem;
     line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .audio-info p {
@@ -1135,6 +1148,10 @@ section {
     color: var(--gray-300);
     font-size: 0.9rem;
     line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .audio-playlist {
