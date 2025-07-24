@@ -598,7 +598,7 @@ section {
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    max-height: 480px;
+    height: 480px;
     overflow-y: auto;
 }
 
@@ -718,7 +718,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
-    align-items: start;
+    align-items: stretch;
 }
 
 .mastering-restoration-grid .mastering,
@@ -747,7 +747,7 @@ section {
 }
 
 .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-    height: 360px;
+    height: 480px;
 }
 
 /* Contact Section */
@@ -935,7 +935,7 @@ section {
     }
     
     .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-        height: 300px;
+        height: 400px;
     }
     
     /* Audio Examples responsive layout */
@@ -1013,7 +1013,7 @@ section {
     
     /* Mastering and Restoration small screen adjustments */
     .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-        height: 250px;
+        height: 320px;
     }
     
     /* Audio Examples small screen adjustments */
@@ -1050,6 +1050,10 @@ section {
     max-width: 1400px;
 }
 
+.examples .section-content {
+    max-width: none;
+}
+
 .section-intro {
     text-align: center;
     font-size: 1.1rem;
@@ -1057,28 +1061,14 @@ section {
     margin-bottom: 3rem;
 }
 
-.examples-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.example-category {
-    background: var(--primary-white);
-    border-radius: 16px;
-    padding: 4rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: start;
-}
 
 .content-section {
     display: flex;
     flex-direction: column;
+}
+
+.content-section p {
+    margin-bottom: 0.5rem;
 }
 
 .example-category h3 {
@@ -1110,16 +1100,18 @@ section {
 /* Audio Player Container */
 .audio-player-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: -0.5rem;
 }
 
 .main-audio {
     background: var(--gray-900);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 1.5rem;
     color: var(--primary-white);
+    margin: 0 auto;
+    max-width: 500px;
 }
 
 .audio-wrapper audio {
@@ -1127,6 +1119,7 @@ section {
     margin-bottom: 1rem;
     background: var(--primary-black);
     border-radius: 8px;
+    min-height: 50px;
 }
 
 .audio-info h4 {
@@ -1225,14 +1218,16 @@ section {
 .examples-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 3rem;
+    align-items: start;
 }
 
 .example-category {
     background: var(--primary-white);
-    padding: 3rem;
+    padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    min-width: 0;
 }
 
 .example-category h3 {
@@ -1428,8 +1423,8 @@ body[data-breakpoint="tablet"] .examples-grid {
 
 /* Desktop: Use side-by-side layout for audio players */
 body[data-breakpoint="desktop"] .audio-player-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
 }
 
 /* Tablet: Adjust audio player layout for smaller space */

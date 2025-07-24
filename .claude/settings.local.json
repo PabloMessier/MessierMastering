@@ -4,7 +4,8 @@
       "Bash(python3:*)",
       "Bash(node:*)",
       "Bash(mv:*)",
-      "Bash(npm run scan:*)"
+      "Bash(npm run scan:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
