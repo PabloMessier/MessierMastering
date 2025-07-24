@@ -32,7 +32,7 @@ const siteConfig = {
             "HAPPY - LA FACTORIA ALEXIS (VIDEO OFICIAL).mp4",
             "Karly Way & El Oveja  - El Trompo   Video Oficial - Rocha Disc (1080p, h264, youtube).mp4",
             "ROXXXE - La Factoria  (Video Oficial).mp4",
-            "Simón Olano X Luisk De León - Culpo Al Alcohol.mp4",
+            "Simon Olano X Luisk De Leon - Culpo Al Alcohol.mp4",
             "Valderrama X BLACKIEBWOY - Hablan de Mi (Audio Oficial) - Valderrama Oficial (1080p, h264, youtube).mp4"
         ],
         "Mastering": [
