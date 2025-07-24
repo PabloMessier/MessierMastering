@@ -132,7 +132,8 @@ function initializeVideoPlaylist() {
             
             // Update main player source only when clicked (lazy loading)
             const videoPath = this.getAttribute('data-video-path');
-            mainPlayer.src = videoPath;
+            // Properly encode the video URL to handle special characters
+            mainPlayer.src = encodeURI(videoPath);
             mainPlayer.preload = 'metadata'; // Only load metadata first
             mainPlayer.load();
             
@@ -234,7 +235,7 @@ function initializeMasteringPlaylist() {
             this.classList.add('active');
             
             const videoPath = this.getAttribute('data-video-path');
-            masteringPlayer.src = videoPath;
+            masteringPlayer.src = encodeURI(videoPath);
             masteringPlayer.preload = 'metadata'; // Only load metadata first
             masteringPlayer.load();
             
@@ -318,7 +319,7 @@ function initializeRestorationPlaylist() {
             this.classList.add('active');
             
             const videoPath = this.getAttribute('data-video-path');
-            restorationPlayer.src = videoPath;
+            restorationPlayer.src = encodeURI(videoPath);
             restorationPlayer.preload = 'metadata'; // Only load metadata first
             restorationPlayer.load();
             
