@@ -45,26 +45,6 @@ body {
     padding: 0 24px;
 }
 
-/* Video Loading Indicator */
-.video-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    z-index: 10;
-    display: none;
-}
-
-.video-loading p {
-    margin: 0;
-    font-size: 16px;
-}
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
@@ -601,9 +581,6 @@ section {
     overflow: hidden;
     background: var(--primary-black);
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .main-video .video-wrapper video {
@@ -621,7 +598,7 @@ section {
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    height: 480px;
+    max-height: 480px;
     overflow-y: auto;
 }
 
@@ -741,7 +718,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
-    align-items: stretch;
+    align-items: start;
 }
 
 .mastering-restoration-grid .mastering,
@@ -770,7 +747,7 @@ section {
 }
 
 .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-    height: 480px;
+    height: 360px;
 }
 
 /* Contact Section */
@@ -958,7 +935,7 @@ section {
     }
     
     .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-        height: 400px;
+        height: 300px;
     }
     
     /* Audio Examples responsive layout */
@@ -1036,7 +1013,7 @@ section {
     
     /* Mastering and Restoration small screen adjustments */
     .mastering-restoration-grid .video-player-container .main-video .video-wrapper {
-        height: 320px;
+        height: 250px;
     }
     
     /* Audio Examples small screen adjustments */
@@ -1044,8 +1021,11 @@ section {
         padding: 2rem 1rem;
     }
     
+    /* Fixed audio container size on small screens */
     .main-audio {
-        padding: 1rem;
+        height: 180px;
+        min-height: 180px;
+        padding: 1.5rem 1rem;
     }
     
     .audio-playlist {
@@ -1073,10 +1053,6 @@ section {
     max-width: 1400px;
 }
 
-.examples .section-content {
-    max-width: none;
-}
-
 .section-intro {
     text-align: center;
     font-size: 1.1rem;
@@ -1084,14 +1060,28 @@ section {
     margin-bottom: 3rem;
 }
 
+.examples-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.example-category {
+    background: var(--primary-white);
+    border-radius: 16px;
+    padding: 4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+}
 
 .content-section {
     display: flex;
     flex-direction: column;
-}
-
-.content-section p {
-    margin-bottom: 0.5rem;
 }
 
 .example-category h3 {
@@ -1123,18 +1113,21 @@ section {
 /* Audio Player Container */
 .audio-player-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: -0.5rem;
+    margin-top: 2rem;
 }
 
 .main-audio {
     background: var(--gray-900);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2.5rem;
     color: var(--primary-white);
-    margin: 0 auto;
-    max-width: 500px;
+    min-height: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .audio-wrapper audio {
@@ -1142,7 +1135,6 @@ section {
     margin-bottom: 1rem;
     background: var(--primary-black);
     border-radius: 8px;
-    min-height: 50px;
 }
 
 .audio-info h4 {
@@ -1241,16 +1233,14 @@ section {
 .examples-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    gap: 1.5rem;
 }
 
 .example-category {
     background: var(--primary-white);
-    padding: 2.5rem;
+    padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    min-width: 0;
 }
 
 .example-category h3 {
@@ -1446,14 +1436,21 @@ body[data-breakpoint="tablet"] .examples-grid {
 
 /* Desktop: Use side-by-side layout for audio players */
 body[data-breakpoint="desktop"] .audio-player-container {
-    grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
 
 /* Tablet: Adjust audio player layout for smaller space */
 body[data-breakpoint="tablet"] .audio-player-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+}
+
+/* Fixed audio container size on tablet */
+body[data-breakpoint="tablet"] .main-audio {
+    height: 190px;
+    min-height: 190px;
+    padding: 2rem 1.5rem;
 }
 
 /* Orientation-specific styles */
