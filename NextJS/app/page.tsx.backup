@@ -1,0 +1,31 @@
+import Header from "@/components/Header"
+import Hero from "@/components/Hero"
+import About from "@/components/About"
+import Services from "@/components/Services"
+import AudioExamples from "@/components/AudioExamples"
+import FAQ from "@/components/FAQ"
+import Studio from "@/components/Studio"
+import Collaborations from "@/components/Collaborations"
+import MasteringVideos from "@/components/MasteringVideos"
+import RestorationVideos from "@/components/RestorationVideos"
+import Contact from "@/components/Contact"
+import Footer from "@/components/Footer"
+
+export default function Home() {
+  return (
+    <main>
+      <Header />
+      <Hero />
+      <About />
+      <Services />
+      <AudioExamples />
+      <FAQ />
+      <Studio />
+      <Collaborations />
+      <MasteringVideos />
+      <RestorationVideos />
+      <Contact />
+      <Footer />
+    </main>
+  )
+}
